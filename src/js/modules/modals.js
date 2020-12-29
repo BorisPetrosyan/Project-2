@@ -95,7 +95,7 @@ const modals = () => {
         //intersting 2
         window.addEventListener('scroll', () => {
 
-            let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+            let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - 10
 
             if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >= scrollHeight)) {
                 document.querySelector(selector).click();
