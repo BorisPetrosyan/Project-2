@@ -1,4 +1,6 @@
 //import checkNumInputs from './chackNumInputs'
+import {postData} from '../services/requests';
+
 
 const forms = () => {
     const form = document.querySelectorAll('form'),
@@ -15,7 +17,7 @@ const forms = () => {
         ok: 'assets/img/ok.png',
         fail: 'assets/img/fail.png'
 
-    };
+    }; 
 
     const path = {
         designer: 'assets/server.php',
@@ -23,16 +25,7 @@ const forms = () => {
     };
 
 
-    const postData = async(url, data) => {
-        //  document.querySelector('.status').textContent = message.loading;
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
-    };
-
+  
     const clearInputs = () => {
         inputs.forEach(item => {
             item.value = '';
