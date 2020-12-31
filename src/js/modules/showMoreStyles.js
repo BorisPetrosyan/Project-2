@@ -1,8 +1,7 @@
-import {getResource} from '../services/requests'
+import { getResource } from '../services/requests'
 
-const showMoreStyles = (trigger, style) => {
-    const cards = document.querySelectorAll(style),
-        btn = document.querySelector(trigger);
+const showMoreStyles = (trigger, wrapper) => {
+    const btn = document.querySelector(trigger);
 
     // cards.forEach(card => {
     //     card.classList.add('animated', 'fadeInUp');
@@ -17,10 +16,34 @@ const showMoreStyles = (trigger, style) => {
     //     btn.remove()
     // });
 
-    btn.addEventListener('click', () => {
-        getResource('http://localhost:3000/styles')
-            .then(res => console.log(res))
-    })
+    btn.addEventListener('click', function() {
+        //http://localhost:3000/styles => res    
+        getResource('assets/db.json')
+            .then(res => createCards(res.styles))
+            .catch(error => console.log(error))
+
+        this.remove();
+    });
+
+
+
+
+    function createCards(res) {
+        res.forEach(({ src, title, link }) => {
+            let card = document.createElement('div');
+
+            card.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
+
+            card.innerHTML = `
+            <div class="styles-block">
+                <img src=${src} alt>
+                <h4>${title}</h4>
+                <a href="${link}">Подробнее</a>
+             </div>
+            `
+            document.querySelector(wrapper).appendChild(card)
+        });
+    }
 };
 
 export default showMoreStyles;
