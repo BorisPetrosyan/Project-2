@@ -7,7 +7,8 @@ const postData = async(url, data) => {
     return await res.text();
 };
 
-
+   
+   
 const getResource = async(url) => {
     let res = await fetch(url);
     if(!res.ok){
