@@ -56,7 +56,7 @@ const sliders = (slides, dir, prev, next) => {
                 plussSlides(1);
                 items[slideIndex - 1].classList.add('slideInDown');
 
-            }, 3000);
+            }, 6000);
         } else {
             paused = setInterval(function() {
                 plussSlides(1);
@@ -64,7 +64,7 @@ const sliders = (slides, dir, prev, next) => {
                 items[slideIndex - 1].classList.add('slideInLeft');
 
 
-            }, 3000);
+            }, 6000);
         }
     }
     activateAnimation();
